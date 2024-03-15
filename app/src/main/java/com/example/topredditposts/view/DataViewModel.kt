@@ -7,18 +7,20 @@ import com.example.topredditposts.dto.PostPageDto
 import com.example.topredditposts.repo.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class DataViewModel(private val repository: Repository) : ViewModel() {
 
     private val _state = MutableStateFlow(PostPageDto())
+    val state: StateFlow<PostPageDto> = _state
 
     init {
         nextPage(isInitial = true)
     }
 
-    private fun nextPage(isInitial: Boolean = false) {
+    fun nextPage(isInitial: Boolean = false) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val newState = repository.getPosts(if (isInitial) null else _state.value.nextPage)

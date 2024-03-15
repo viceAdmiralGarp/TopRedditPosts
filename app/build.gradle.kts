@@ -38,6 +38,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.fragment.ktx)
+    implementation (libs.picasso)
 
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
