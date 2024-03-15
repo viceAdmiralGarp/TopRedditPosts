@@ -47,8 +47,6 @@ class TopRedditHolderPostsAdapter(private val activity: Context,
 
                 Picasso.get()
                     .load(postDto.url)
-                    .resize(320, 570)
-                    .centerCrop()
                     .into(imageView)
 
                 imageView.setOnClickListener {

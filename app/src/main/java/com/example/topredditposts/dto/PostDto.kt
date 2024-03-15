@@ -7,7 +7,7 @@ data class PostPageDto(
 
 data class PostDto(
     val authorFullName: String,
-    val created: Long,
-    val numComments: Long,
+    val created: String,
+    val numComments: String,
     val url: String
 )

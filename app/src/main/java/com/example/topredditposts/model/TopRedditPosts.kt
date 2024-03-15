@@ -35,9 +35,9 @@ data class TopRedditPosts(
 fun TopRedditPosts.toDto(): PostPageDto = PostPageDto(
     posts = data.children.map {
         PostDto(
-            authorFullName = it.data.authorFullName,
-            created = it.data.created / 1000 / 60 / 60,
-            numComments = it.data.numComments,
+            authorFullName = "Author ${it.data.authorFullName}",
+            created = "${it.data.created / 1000 / 60 / 60} hour(s) ago",
+            numComments = "Comments ${it.data.numComments}",
             url = it.data.url
         )
     }.toList(),
