@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.topredditposts.R
 import com.example.topredditposts.databinding.ListItemBinding
 import com.example.topredditposts.dto.PostDto
+import com.example.topredditposts.img.ImageLoader
 import com.squareup.picasso.Picasso
 
 
@@ -63,7 +66,17 @@ class TopRedditHolderPostsAdapter(private val activity: Context,
             val fullScreenImageView = dialog.findViewById<ImageView>(R.id.full_screen)
             Picasso.get().load(imageUrl).into(fullScreenImageView)
 
+            val downloadButton = dialog.findViewById<Button>(R.id.download_button)
+            downloadButton.setOnClickListener {
+                downloadImage(imageUrl)
+            }
+
             dialog.show()
+        }
+
+        private fun downloadImage(imageUrl: String) {
+            ImageLoader.downloadImage(imageUrl, activity)
+            Toast.makeText(activity, "Image downloaded", Toast.LENGTH_SHORT).show()
         }
     }
 
