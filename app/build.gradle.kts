@@ -13,6 +13,7 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        viewBinding.enable = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,6 +37,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.fragment.ktx)
 
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
